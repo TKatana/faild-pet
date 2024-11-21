@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Paragraph Example</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS CDN -->
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-8">
+        <!-- Link to trigger the popup -->
+        <a href="#" id="open-popup" class="text-blue-600 hover:text-blue-800 text-xl font-medium">Click here to read more</a>
+
+        <!-- Popup modal -->
+        <div id="popup" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Important Information</h2>
+                <p class="text-gray-600">
+                    This is the content of the pop-up paragraph. You can add more detailed information here that will appear when the link is clicked. The pop-up will disappear when you click anywhere outside the modal or close it using the button.
+                </p>
+                <div class="mt-4">
+                    <button id="close-popup" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the popup visibility
+
+        // Get the elements
+        const openPopupButton = document.getElementById('open-popup');
+        const popup = document.getElementById('popup');
+        const closePopupButton = document.getElementById('close-popup');
+
+        // Open the popup when the link is clicked
+        openPopupButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent default anchor behavior
+            popup.classList.remove('hidden'); // Show the popup
+        });
+
+        // Close the popup when the "Close" button is clicked
+        closePopupButton.addEventListener('click', () => {
+            popup.classList.add('hidden'); // Hide the popup
+        });
+
+        // Optional: Close the popup when clicked outside the modal content
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.classList.add('hidden'); // Hide the popup when clicked outside
+            }
+        });
+    </script>
+
+</body>
+</html>

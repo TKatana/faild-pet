@@ -8,7 +8,6 @@ module.exports = {
 }
 
 
-
 module.exports = {
   theme: {
     extend: {
